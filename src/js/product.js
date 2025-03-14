@@ -5,5 +5,7 @@ import ProductDetails from "./ProductDetails.mjs";
 const productId = getParam("product");
 const dataSource = new ProductData("tents");
 
+mvh--week2
 const product = new ProductDetails(productId, dataSource);
 product.init();
+
