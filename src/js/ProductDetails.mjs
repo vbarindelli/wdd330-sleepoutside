@@ -35,17 +35,25 @@ export default class ProductDetails {
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
   }
+  items = new Array()
   addToCart() {
     // setLocalStorage("so-cart", this.product);
-    let cartItems = JSON.parse(localStorage.getItem('so-cart')) || []; // get cart array of items from local storage if null set to empty array
+    let cartItems = new Array();
+    let parsedData = JSON.parse(localStorage.getItem('so-cart')) || []; // get cart array of items from local storage if null set to empty array
+    if (typeof parsedData === 'object' && !Array.isArray(parsedData)) {
+      cartItems = [parsedData];
+    } else {
+      cartItems = parsedData;
+    }
     cartItems.push(this.product);
     setLocalStorage('so-cart', cartItems);
-  }
-  renderProductDetails(selector) {
-    const element = document.querySelector(selector);
-    element.insertAdjacentHTML(
-      "afterBegin",
-      productDetailsTemplate(this.product)
-    );
+    renderProductDetails(selector);
+    {
+      const element = document.querySelector(selector);
+      element.insertAdjacentHTML(
+        "afterBegin",
+        productDetailsTemplate(this.product)
+      );
+    }
   }
 }
