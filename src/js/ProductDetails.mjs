@@ -17,13 +17,32 @@ export default class ProductDetails {
     // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on "this" to understand why.
     document
       .getElementById("add-to-cart")
-      .addEventListener("click", this.addProductToCart.bind(this));
+      .addEventListener("click", this.addToCart.bind(this));
   }
 
-  addProductToCart() {
-    const cartItems = getLocalStorage("so-cart") || [];
-    cartItems.push(this.product);
-    setLocalStorage("so-cart", cartItems);
+  addToCart() {
+    // Retrieve existing cart from local storage, ensuring it's always an array
+    let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+
+    // Ensure cart is an array (in case it was stored incorrectly)
+    if (!Array.isArray(cart)) {
+      cart = [];
+    }
+
+    // Check if the product is already in the cart
+    const existingProduct = cart.find(item => item.Id === this.product.Id);
+
+    if (existingProduct) {
+      // If the product is already in the cart, increase its quantity
+      existingProduct.quantity += 1;
+    } else {
+      // Otherwise, add the new product with a quantity property
+      this.product.quantity = 1;
+      cart.push(this.product);
+    }
+
+    // Save updated cart back to local storage
+    setLocalStorage("so-cart", cart);
   }
 
   renderProductDetails() {
