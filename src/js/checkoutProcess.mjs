@@ -48,7 +48,7 @@ export default class CheckoutProcess {
       this.outputSelector + " #cartTotal"
     );
     const itemNumElement = document.querySelector(
-      this.outputSelector + " #num-items"
+      this.outputSelector + " #numberItems"
     );
     itemNumElement.innerText = this.list.length;
     // calculate the total of all the items in the cart
@@ -74,7 +74,7 @@ export default class CheckoutProcess {
     // once the totals are all calculated display them in the order summary page
     const tax = document.querySelector(`${this.outputSelector} #tax`);
     const shipping = document.querySelector(`${this.outputSelector} #shipping`);
-    const orderTotal = document.querySelector(`${this.outputSelector} #orderTotal`);
+    const orderTotal = document.querySelector(`${this.outputSelector} #total`);
 
     tax.innerText = `$${this.tax.toFixed(2)}`;
     shipping.innerText = `$${this.shipping.toFixed(2)}`;

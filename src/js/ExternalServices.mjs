@@ -17,7 +17,7 @@ export default class ExternalServices {
   async getData(category) {
     const response = await fetch(`${baseURL}products/search/${category}`);
     const data = await convertToJson(response);
-    
+
     return data.Result;
   }
   async findProductById(id) {
@@ -35,6 +35,6 @@ export default class ExternalServices {
       },
       body: JSON.stringify(payload),
     };
-    return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
+    return await fetch(`${baseURL}/checkout`, options).then(convertToJson);
   }
 }
