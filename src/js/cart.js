@@ -2,11 +2,14 @@ import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
+
+const cartItems = getLocalStorage("so-cart");
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
+
+
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -27,4 +30,18 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+
+
 renderCartContents();
+
+
+let cartTotal = 0;
+if (cartItems) {
+  let cartFooter = document.querySelector(".list-footer");
+  cartFooter.className = "show";
+  const cartPrices = cartItems.map((cartItem) => cartItem.quantity * cartItem.FinalPrice);
+  cartTotal = cartPrices.reduce((acc, num) => acc + num, 0);
+
+  let finalCart = document.querySelector(".list-total");
+  finalCart.innerHTML = `Total: $${cartTotal.toFixed(2)}`;
+}
