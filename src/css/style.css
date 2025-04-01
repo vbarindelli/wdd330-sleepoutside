@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -161,7 +161,8 @@ button {
   columns: 4;
   column-gap: 1rem;
   list-style-type: none;
-  text-align: center;;
+  text-align: center;
+  ;
 }
 
 .product-grid a {
@@ -222,7 +223,7 @@ button {
 /* End product list card */
 
 .product-detail {
-  
+
   width: max(500px, 90%);
   margin: 1em auto;
   padding: 1em;
@@ -288,7 +289,7 @@ button {
 
 .cart-card__price {
   grid-row: 2;
- 
+
   grid-column: 3;
 }
 
@@ -312,4 +313,38 @@ footer {
   font-size: var(--small-font);
   border-top: 1px solid var(--tertiary-color);
   padding: 1em;
+}
+
+.banner {
+  background: rgb(63, 124, 55);
+  color: black;
+  text-align: center;
+  margin: auto;
+  width: 99%;
+  border-radius: var(--borderRadius);
+
+
+}
+
+.bannerContent {
+  padding: 2em;
+  /* max-width: 1000px; */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.bannerText {
+  flex-grow: 1;
+  line-height: 1.4;
+}
+
+.bannerClose {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#hide {
+  display: none;
 }
