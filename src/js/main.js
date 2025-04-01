@@ -15,3 +15,7 @@ if (document.querySelector(".bannerClose")) {
 }
 
 
+numVisits++;
+
+localStorage.setItem("numVisits-ls", numVisits);
+
